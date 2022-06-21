@@ -6,22 +6,26 @@ import { init, cleanup } from './whatsapp.js'
 
 const app = express()
 
-// VARIABEL LOCAL
-// const host = process.env.HOST || '127.0.0.1' //Local host
+// SETUP LOCAL
+// const host = process.env.HOST ?? '127.0.0.1'
 // const port = parseInt(process.env.PORT ?? 8000)
-// const protocol = process.env.PROTOCOL || 'http'
 
-// VARIABEL HEROKU
-// const host = 'biywa.herokuapp.com'
+// SETUP HEROKU
 const port = process.env.PORT || 8000
 
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 app.use('/', routes)
 
+// LOCAL
+// app.listen(port, host, () => {
+//     init()
+//     console.log(`Server is listening on http://${host}:${port}`)
+// })
+
+// HEROKU
 app.listen(port, () => {
     init()
-    // console.log(`Server is listening on ${protocol}://${host}:${port}`) //LOCAL SETTING
     console.log(`Server is listening on ${port}`); //HEROKU
 })
 
