@@ -12,17 +12,17 @@ const app = express()
 // const protocol = process.env.PROTOCOL || 'http'
 
 // VARIABEL HEROKU
-const host = 'biywa.herokuapp.com'
+// const host = 'biywa.herokuapp.com'
 const port = process.env.PORT || 8000
 
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 app.use('/', routes)
 
-app.listen(port, host, () => {
+app.listen(port, () => {
     init()
     // console.log(`Server is listening on ${protocol}://${host}:${port}`) //LOCAL SETTING
-    console.log(`Server is listening on https://${host}:${port}`); //HEROKU
+    console.log(`Server is listening on ${port}`); //HEROKU
 })
 
 nodeCleanup(cleanup)
