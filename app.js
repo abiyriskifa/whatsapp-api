@@ -5,7 +5,8 @@ import routes from './routes.js'
 import { init, cleanup } from './whatsapp.js'
 
 const app = express()
-const host = process.env.HOST ?? '127.0.0.1'
+// const host = process.env.HOST ?? '127.0.0.1' //Local host
+const host = 'https://biywa.herokuapp.com/' //Heroku
 const port = parseInt(process.env.PORT ?? 8000)
 
 app.use(express.urlencoded({ extended: true }))
@@ -14,7 +15,8 @@ app.use('/', routes)
 
 app.listen(port, host, () => {
     init()
-    console.log(`Server is listening on http://${host}:${port}`)
+    // console.log(`Server is listening on http://${host}:${port}`)
+    console.log('App listening bro...')
 })
 
 nodeCleanup(cleanup)
